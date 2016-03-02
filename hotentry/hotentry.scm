@@ -11,7 +11,7 @@
 
 (define (get-rss url)
   (receive (_ _ hostname _ path query _) (uri-parse url)
-    (receive (code heaaders body) (http-get hostname (string-concatenate (list path "?" query)))
+    (receive (code headers body) (http-get hostname (string-concatenate (list path "?" query)))
       (unless (string=? code "200")
         (error "Can't download " url))
       body)))
